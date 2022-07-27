@@ -1,23 +1,34 @@
 import { Component } from "react";
-
 import "./App.css";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: "Abraham",
-      fname: "Dulla",
+      name: { firstname: "Abraham", lastname: "Dulla" },
     };
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <p>My Name is {this.state.name}</p>
-          <button>Change Name</button>
-        </header>
+      <div>
+        <p>
+          My Name is {this.state.name.firstname} {this.state.name.lastname}
+        </p>
+        <button
+          onClick={() => {
+            this.setState(
+              {
+                name: { firstname: "Eyu", lastname: "Something" },
+              },
+              () => {
+                console.log(this.state);
+              }
+            );
+          }}
+        >
+          Change Name
+        </button>
       </div>
     );
   }
